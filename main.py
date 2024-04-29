@@ -15,40 +15,12 @@ def main():
     parser.add_argument("-u", "--url", required=True, type=str, help="Target's url")
 
     parser.add_argument(
-        "-S",
-        "--Subdomain",
-        required=False,
-        type=str,
-        help="Wordlist for Subdomains",
-    )
-    parser.add_argument(
-        "-D",
-        "--Directory",
-        required=False,
-        type=str,
-        help="Wordlist for directory",
-    )
-
-    parser.add_argument(
         "-s",
-        "--subdomain",
-        required=False,
-        type=str,
-        help="Select your words for Subdomains",
-    )
-    parser.add_argument(
-        "-d",
-        "--directory",
-        required=True,
-        type=str,
-        help="Select your words for directory",
-    )
-
-    parser.add_argument(
         "--speed",
-        action="store_true",
         required=False,
-        help="Choose the speed of the scan 1 to 5",
+        type=int,
+        default=1,
+        help="Choose the speed of the scan 1 to 5, default 1",
     )
 
     parser.add_argument(
@@ -60,8 +32,34 @@ def main():
     )
 
     args = parser.parse_args()
+    if args.speed > 5 or args.speed < 1:
+        return print("Error: speed value should be between 1 and 5")
+    subdomainsScan(args.url, args.speed)
 
 
+def subdomainsScan(url: str, speed: int):
+    validSub = []
+    sub_list = open("sub.txt").read()
+    subdoms = sub_list.splitlines()
+    for sub in subdoms:
+        sub_domains = f"https://{sub}.{url}"
+        try:
+            requests.get(sub_domains)
+
+        except requests.ConnectionError:
+            pass
+
+        else:
+            validSub.append(sub)
+
+    print(validSub)
+
+
+if __name__ == "__main__":
+    main()
+
+
+"""
 sub_list = open("subdomains.txt").read()
 subdoms = sub_list.splitlines()
 
@@ -88,3 +86,4 @@ for dir in directories:
         pass
     else:
         print("Valid directory:", dir_enum)
+"""

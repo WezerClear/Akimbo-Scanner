@@ -1,2 +1,9 @@
 www
 test
+login
+blog
+admin
+connect
+forum
+calendar
+date
