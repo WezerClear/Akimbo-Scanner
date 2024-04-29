@@ -10,6 +10,7 @@ This tool is intended for educational purposes and ethical hacking practices. Th
 ## Description
 
 Akimbo Scanner is a tool designed to scan subdomains and directories. It is developed by SGB and maintained on GitHub https://github.com/wezerclear.
+s
 
 ## Installation
 
