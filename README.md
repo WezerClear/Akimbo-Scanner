@@ -1,7 +1,7 @@
 ````markdown
 # Akimbo Scanner
 
-![Akimbo Scanner](https://user-images.githubusercontent.com/xxxxxxx/xxxxx/xxxxx.png)
+![Akimbo Scanner](https://github.com/WezerClear/sub-dir/blob/main/logo.jpg)
 
 **Disclaimer**
 
