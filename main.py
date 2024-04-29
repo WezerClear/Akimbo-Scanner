@@ -51,8 +51,23 @@ def subdomainsScan(url: str, speed: int):
 
         else:
             validSub.append(sub)
+    return choiceDir(validSub)
 
-    print(validSub)
+
+def choiceDir(subList: list):
+    index = 0
+    choice = ""
+    for sub in subList:
+        index += 1
+        print(index, "-", sub)
+    while choice != "end":
+        choice = input("Enter sub's name to delete, 'end' to validate\n")
+        try:
+            subList.remove(choice)
+        except:
+            if choice != "end":
+                print("Enter a valid input\n")
+    return print(subList)
 
 
 if __name__ == "__main__":
