@@ -5,7 +5,6 @@ import time
 
 
 def main():
-
     parser = argparse.ArgumentParser(
         prog="sub-dir",
         description="sub-dir",
@@ -84,7 +83,14 @@ def directoryScan(subList: list, url: str):
             r = requests.get(dir_enum)
             if r.status_code != 404:
                 pageDict[dir_enum] = r.status_code
-    return print(pageDict)
+    return display(subList, url, pageDict)
+
+
+def display(subList: list, url: str, pageDict: dict):
+    print("\nResult:\n")
+    for result in pageDict:
+        print(f"{result} -> [{pageDict[result]}]")
+    print("\n")
 
 
 if __name__ == "__main__":
