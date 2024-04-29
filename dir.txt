@@ -1,1 +1,6 @@
 login
+wp-login.php
+bus
+images
+assets
+inside-story

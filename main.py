@@ -51,10 +51,10 @@ def subdomainsScan(url: str, speed: int):
 
         else:
             validSub.append(sub)
-    return choiceDir(validSub)
+    return choiceDir(validSub, url)
 
 
-def choiceDir(subList: list):
+def choiceDir(subList: list, url: str):
     index = 0
     choice = ""
     for sub in subList:
@@ -67,38 +67,25 @@ def choiceDir(subList: list):
         except:
             if choice != "end":
                 print("Enter a valid input\n")
-    return print(subList)
+    return directoryScan(subList, url)
+
+
+def directoryScan(subList: list, url: str):
+    pageDict = dict()
+    subList.insert(0, "")
+    dirList = open("dir.txt").read()
+    directories = dirList.splitlines()
+    for dir in directories:
+        for sub in subList:
+            if sub != "":
+                dir_enum = f"https://{sub}.{url}/{dir}"
+            if sub == "":
+                dir_enum = f"https://{url}/{dir}"
+            r = requests.get(dir_enum)
+            if r.status_code != 404:
+                pageDict[dir_enum] = r.status_code
+    return print(pageDict)
 
 
 if __name__ == "__main__":
     main()
-
-
-"""
-sub_list = open("subdomains.txt").read()
-subdoms = sub_list.splitlines()
-
-for sub in subdoms:
-    sub_domains = f"http://{sub}.{sys.argv[1]}"
-
-    try:
-        requests.get(sub_domains)
-
-    except requests.ConnectionError:
-        pass
-
-    else:
-        print("Valid domain: ", sub_domains)
-
-
-sub_list = open("wordlist.txt").read()
-directories = sub_list.splitlines()
-
-for dir in directories:
-    dir_enum = f"http://{sys.argv[1]}/{dir}.html"
-    r = requests.get(dir_enum)
-    if r.status_code == 404:
-        pass
-    else:
-        print("Valid directory:", dir_enum)
-"""
