@@ -22,7 +22,7 @@ Navigate to the directory and install the required dependencies using pip:
 
 ```bash
 cd Akimbo-Scanner
-pip install -r requirements.txt
+pip3 install -r requirements.txt
 ```
 
 ## Usage
