@@ -16,7 +16,7 @@ s
 To use Akimbo Scanner, make sure you have Python installed on your system. Clone the repository from GitHub:
 
 ```bash
-git clone https://github.com/wezerclear/Akimbo-Scanner.git
+git clone https://github.com/WezerClear/Akimbo-Scanner
 ```
 
 Navigate to the directory and install the required dependencies using pip:
