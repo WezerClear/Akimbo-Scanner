@@ -1,4 +1,3 @@
-````markdown
 # Akimbo Scanner
 
 ![Akimbo Scanner](https://github.com/WezerClear/sub-dir/blob/main/logo.jpg)
@@ -19,7 +18,6 @@ To use Akimbo Scanner, make sure you have Python installed on your system. Clone
 ```bash
 git clone https://github.com/wezerclear/Akimbo-Scanner.git
 ```
-````
 
 Navigate to the directory and install the required dependencies using pip:
 
@@ -59,3 +57,7 @@ No licence
 ## Acknowledgements
 
 - WezerClear for maintaining the project.
+
+```
+
+```
