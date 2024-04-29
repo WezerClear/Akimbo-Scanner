@@ -3,7 +3,7 @@
 
 ![Akimbo Scanner](https://user-images.githubusercontent.com/xxxxxxx/xxxxx/xxxxx.png)
 
-## Disclaimer
+**Disclaimer**
 
 This tool is intended for educational purposes and ethical hacking practices. The author disclaims any responsibility for any illegal actions performed with this tool.
 
