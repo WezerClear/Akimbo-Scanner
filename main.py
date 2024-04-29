@@ -5,10 +5,31 @@ import time
 
 
 def main():
+
+    print(
+        '''                                   
+  +-'~`---------------------------------/\--
+ ||"""""""""""""""""""""""""""""""" \\\\\\  \/~)
+ ||    AUTHOR SGB                    \\\\\\  \/_
+  |~~~~~~~~-________________-_________________\ ~--_
+  !---------|_________       ------~~~~~(--   )--~~
+                      \ /~~~~\~~\   )--- \_ /(
+                       ||     |  | \   ()   \\
+                       \\____/_ / ()\        \\
+                        `~~~~~~~~~-. \        \\
+                                    \ \  <($)> \\
+                                     \ \        \\
+                                      \ \        \\
+      AKIMBO__                         \ \        \\
+         SCANNER__                      \ \  ()    \|
+                                        _\_\__====~~~               
+'''
+    )
+
     parser = argparse.ArgumentParser(
-        prog="sub-dir",
-        description="sub-dir",
-        epilog="dev: WezerClear / SGB  GitHub: https://github.com/WezerClear ",
+        prog="Akimbo Scanner",
+        description="Scanner for Subdomains and Directory",
+        epilog="dev: WezerClear / SGB  GitHub: https://github.com/WezerClear",
     )
 
     parser.add_argument("-u", "--url", required=True, type=str, help="Target's url")
@@ -56,9 +77,11 @@ def subdomainsScan(url: str, speed: int):
 def choiceDir(subList: list, url: str):
     index = 0
     choice = ""
+    print("\n")
     for sub in subList:
         index += 1
         print(index, "-", sub)
+    print("\n")
     while choice != "end":
         choice = input("Enter sub's name to delete, 'end' to validate\n")
         try:
@@ -66,6 +89,20 @@ def choiceDir(subList: list, url: str):
         except:
             if choice != "end":
                 print("Enter a valid input\n")
+    print("\n\n")
+    print(
+        f"""
+   __________________                         ________
+   | Akimbo Scanner |                         | v1.0 |
+-------------------------------------------------------------
+| target's url         |  {url}
+|----------------------|
+| target's subdomains  |  {subList}                                  
+|------------------------------------------------------------
+|      author: SGB     |  https://github.com/WezerClear       
+-------------------------------------------------------------
+"""
+    )
     return directoryScan(subList, url)
 
 
@@ -87,7 +124,11 @@ def directoryScan(subList: list, url: str):
 
 
 def display(subList: list, url: str, pageDict: dict):
-    print("\nResult:\n")
+    displaySub = ""
+    subList.pop(0)
+    for sub in subList:
+        displaySub += sub + " "
+    print(f"\nResult for [{url}] with {displaySub}\n")
     for result in pageDict:
         print(f"{result} -> [{pageDict[result]}]")
     print("\n")
