@@ -8,22 +8,21 @@ This tool is intended for educational purposes and ethical hacking practices. Th
 
 ## Description
 
-Akimbo Scanner is a tool designed to scan subdomains and directories. It is developed by SGB and maintained on GitHub https://github.com/wezerclear.
-s
+Akimbo Scanner is a tool designed to scan subdomains and directories. It is developed by SGB and maintained on GitHub https://github.com/wezerclear
 
 ## Installation
 
 To use Akimbo Scanner, make sure you have Python installed on your system. Clone the repository from GitHub:
 
 ```bash
-git clone https://github.com/wezerclear/Akimbo-Scanner.git
+git clone https://github.com/WezerClear/Akimbo-Scanner
 ```
 
 Navigate to the directory and install the required dependencies using pip:
 
 ```bash
 cd Akimbo-Scanner
-pip install -r requirements.txt
+pip3 install -r requirements.txt
 ```
 
 ## Usage
