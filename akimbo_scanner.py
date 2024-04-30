@@ -23,6 +23,7 @@ def main():
       AKIMBO__                         \ \        \\
          SCANNER__                      \ \  ()    \|
                                         _\_\__====~~~               
+\n
 '''
     )
 
@@ -61,7 +62,9 @@ def subdomainsScan(url: str, speed: int):
     validSub = []
     sub_list = open("sub.txt").read()
     subdoms = sub_list.splitlines()
-    for sub in subdoms:
+    taille = len(subdoms)
+    progress_step = max(taille // 30, 1)
+    for i, sub in enumerate(subdoms):
         sub_domains = f"https://{sub}.{url}"
         try:
             requests.get(sub_domains)
@@ -71,6 +74,11 @@ def subdomainsScan(url: str, speed: int):
 
         else:
             validSub.append(sub)
+        if (i + 1) % progress_step == 0 or i == taille - 1:
+            progress = min((i + 1) / taille * 100, 100)
+            done = int(progress / (100 / 30))
+            remaining = 30 - done
+            print(f"{i+1}/{taille}", "#" * done + "." * remaining, end="\r")
     return choiceDir(validSub, url)
 
 
@@ -96,7 +104,7 @@ def choiceDir(subList: list, url: str):
    | Akimbo Scanner |                         | v1.0 |
 -------------------------------------------------------------
 | target's url         |  {url}
-|----------------------|
+|----------------------|-------------------------------------
 | target's subdomains  |  {subList}                                  
 |------------------------------------------------------------
 |      author: SGB     |  https://github.com/WezerClear       
@@ -111,8 +119,17 @@ def directoryScan(subList: list, url: str):
     subList.insert(0, "")
     dirList = open("dir.txt").read()
     directories = dirList.splitlines()
+    taille = len(directories) * len(subList)
+    progress_step = max(taille // 30, 1)
+    i = 0
     for dir in directories:
         for sub in subList:
+            if (i + 1) % progress_step == 0 or i == taille - 1:
+                progress = min((i + 1) / taille * 100, 100)
+                done = int(progress / (100 / 30))
+                remaining = 30 - done
+                print(f"{i+1}/{taille}", "#" * done + "." * remaining, end="\r")
+            i += 1
             if sub != "":
                 dir_enum = f"https://{sub}.{url}/{dir}"
             if sub == "":
@@ -120,6 +137,7 @@ def directoryScan(subList: list, url: str):
             r = requests.get(dir_enum)
             if r.status_code != 404:
                 pageDict[dir_enum] = r.status_code
+
     return display(subList, url, pageDict)
 
 
