@@ -56,7 +56,3 @@ No licence
 ## Acknowledgements
 
 - WezerClear for maintaining the project.
-
-```
-
-```
